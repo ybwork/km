@@ -53,6 +53,8 @@
 
 	Генераторы
 
+	Декораторы
+
 	ООП
  
 	Исключения
@@ -562,6 +564,28 @@ next(item) # 3
 def generator():
 	for i in range(3):
 		yield i # наличие ключевого слова yield в функции говорит, что это функция генератор при этом return в конце функции не доступен
+
+# Декораторы
+'''
+	Декораторы — это обёртки, которые дают возможность изменить поведение функции, не изменяя её код.
+'''
+def new_decorator(function_to_decorate):
+	def original_function():
+		function_to_decorate()
+		print('new code')
+	return original_function
+
+def make():
+	print('make function')
+
+test = new_decorator(make)
+test() # new code & make function
+
+@new_decorator
+def create():
+	print('create function')
+
+create() # new code & make function
 
 # ООП
 '''
